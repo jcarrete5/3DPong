@@ -7,7 +7,7 @@ public class ScoreUpdater : MonoBehaviour
 	public Text scoreText, messageText;
 
 	const int winLimit = 7;
-	static int playerScore = 0, aiScore = 0;
+	static int playerScore, aiScore;
 	BallSpawner ballSpawner;
 
 	void Start()
@@ -19,6 +19,12 @@ public class ScoreUpdater : MonoBehaviour
 	void UpdateScore()
 	{
 		scoreText.text = "Player: " + playerScore + " | AI: " + aiScore;
+	}
+
+	void DestroyPowerUps()
+	{
+		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("PowerUp"))
+			Destroy(obj);
 	}
 
 	void OnCollisionEnter(Collision collision)
@@ -35,6 +41,7 @@ public class ScoreUpdater : MonoBehaviour
 		}
 		UpdateScore();
 
+		DestroyPowerUps();
 		if(playerScore == winLimit)
 		{
 			Debug.Log("Player won!");
@@ -52,6 +59,6 @@ public class ScoreUpdater : MonoBehaviour
 	IEnumerator NextRound()
 	{
 		yield return new WaitForSeconds(2);
-		StartCoroutine(ballSpawner.SpawnBall());
+		StartCoroutine(ballSpawner.DelaySpawnBall());
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AddSpin : MonoBehaviour
+public class DecreaseBallSpeed : MonoBehaviour
 {
 	GameObject[] balls;
 
@@ -19,6 +19,6 @@ public class AddSpin : MonoBehaviour
 	void ApplyEffect()
 	{
 		foreach(GameObject ball in balls)
-			ball.GetComponent<Rigidbody>().angularVelocity = new Vector3(30, 30, 30);
+			ball.GetComponent<Rigidbody>().velocity -= new Vector3(100, 100, 100);
 	}
 }
