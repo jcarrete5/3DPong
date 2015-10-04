@@ -5,6 +5,7 @@ public class IncreasePaddleSize : MonoBehaviour
 {
 	void OnTriggerEnter(Collider other)
 	{
+		transform.position = new Vector3(100, 0, 0);
 		GameObject obj;
 		if(other.gameObject.GetComponent<BallMemory>().PlayerHitBallLast)
 			obj = GameObject.FindGameObjectWithTag("Player");
