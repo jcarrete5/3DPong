@@ -21,18 +21,18 @@ public class AI : MonoBehaviour {
 		{
 			framesTillSkip--;
 			Vector3 newPosition = transform.position;
-			if(Mathf.Abs(balls[0].transform.position.y - newPosition.y) <= 1.5)
+			if(Mathf.Abs(balls[0].transform.position.y - newPosition.y) <= 0.15)
 				newPosition.y = balls[0].transform.position.y;
-			if(Mathf.Abs(balls[0].transform.position.x - newPosition.x) <= 1.5)
+			if(Mathf.Abs(balls[0].transform.position.x - newPosition.x) <= 0.15)
 			    newPosition.x = balls[0].transform.position.x;
-			if(balls[0].transform.position.y - newPosition.y < -1.5)
-				newPosition.y -= 1.5f;
-			if(balls[0].transform.position.y - newPosition.y > 1.5)
-				newPosition.y += 1.5f;
-			if(balls[0].transform.position.x - newPosition.x < -1.5)
-				newPosition.x -= 1.5f;
-			if(balls[0].transform.position.x - newPosition.x > 1.5)
-				newPosition.x += 1.5f;
+			if(balls[0].transform.position.y - newPosition.y < -0.15)
+				newPosition.y -= 0.15f;
+			if(balls[0].transform.position.y - newPosition.y > 0.15)
+				newPosition.y += 0.15f;
+			if(balls[0].transform.position.x - newPosition.x < -0.15)
+				newPosition.x -= 0.15f;
+			if(balls[0].transform.position.x - newPosition.x > 0.15)
+				newPosition.x += 0.15f;
 			float x = newPosition.x;
 			float y = newPosition.y;
 			newPosition.z = (Mathf.Sqrt(-(Mathf.Pow (x, 2)) - (Mathf.Pow (y, 2)) + Mathf.Pow (radius, 2)) - centerZ);
