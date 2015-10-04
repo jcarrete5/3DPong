@@ -5,21 +5,20 @@ public class IncreasePaddleSize : MonoBehaviour
 {
 	void OnTriggerEnter(Collider other)
 	{
-		Destroy(gameObject);
-		ApplyEffect(other);
-	}
-	
-	void ApplyEffect(Collider other)
-	{
+		transform.position = new Vector3(100, 0, 0);
+		GameObject obj;
 		if(other.gameObject.GetComponent<BallMemory>().PlayerHitBallLast)
-		{
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			player.transform.localScale += new Vector3(0.5f, 0.5f, 0);
-		}
+			obj = GameObject.FindGameObjectWithTag("Player");
 		else
-		{
-			GameObject ai = GameObject.FindGameObjectWithTag("AI");
-			ai.transform.localScale += new Vector3(0.5f, 0.5f, 0);
-		}
+			obj = GameObject.FindGameObjectWithTag("AI");
+		obj.transform.localScale += new Vector3(0.5f, 0.5f, 0);
+		StartCoroutine(Reset(obj));
+	}
+
+	IEnumerator Reset(GameObject obj)
+	{
+		yield return new WaitForSeconds(10f);
+		obj.transform.localScale -= new Vector3(0.5f, 0.5f, 0);
+		Destroy(gameObject);
 	}
 }

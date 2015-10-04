@@ -13,6 +13,9 @@ public class MoreBalls : MonoBehaviour
 	
 	void ApplyEffect()
 	{
-		GameObject.FindGameObjectWithTag("GameController").GetComponent<BallSpawner>().SpawnBall();
+		BallSpawner ballSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<BallSpawner>();
+		ballSpawner.SpawnBall(new Vector3(Mathf.Abs(Random.Range(-100, 100))+1,
+		                                  Mathf.Abs(Random.Range(-100, 100))+1,
+		                                  Mathf.Abs(Random.Range(-200, 200))+1));
 	}
 }

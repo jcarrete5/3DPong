@@ -21,12 +21,12 @@ public class BallSpawner : MonoBehaviour
 		}
 		messageText.text = "";
 		
-		SpawnBall();
+		SpawnBall(new Vector3(0, 0, -250));
 	}
 
-	public void SpawnBall()
+	public void SpawnBall(Vector3 force)
 	{
 		GameObject ball = Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-		ball.GetComponent<Rigidbody>().AddForce(0, 0, -250); 
+		ball.GetComponent<Rigidbody>().AddForce(force); 
 	}
 }
