@@ -9,10 +9,10 @@ public class BallSpawner : MonoBehaviour
 
 	void Start()
 	{
-		StartCoroutine(SpawnBall());
+		StartCoroutine(DelaySpawnBall());
 	}
 
-	public IEnumerator SpawnBall()
+	public IEnumerator DelaySpawnBall()
 	{
 		for(int i = 3; i > 0; i--)
 		{
@@ -20,7 +20,12 @@ public class BallSpawner : MonoBehaviour
 			yield return new WaitForSeconds(1);
 		}
 		messageText.text = "";
+		
+		SpawnBall();
+	}
 
+	public void SpawnBall()
+	{
 		GameObject ball = Instantiate(ballPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 		ball.GetComponent<Rigidbody>().AddForce(0, 0, -250); 
 	}

@@ -5,13 +5,12 @@ public class PowerUpSpawner : MonoBehaviour {
 
 	public Transform boundary; 
 	public GameObject[] powerups;
-	// Use this for initialization
+
 	void Start() 
 	{
 		StartCoroutine(Spawn());
 	}
-	
-	// Update is called once per frame
+
 	IEnumerator Spawn() 
 	{
 		while(true) 
