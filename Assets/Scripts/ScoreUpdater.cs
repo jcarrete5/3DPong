@@ -46,7 +46,7 @@ public class ScoreUpdater : MonoBehaviour
 		DestroyDynamicObjects();
 		if(playerScore == winLimit)
 		{
-			Debug.Log("Player won!");
+			Debug.Log("You won!");
 			messageText.text = "Player Won!";
 		}
 		else if(aiScore == winLimit)
