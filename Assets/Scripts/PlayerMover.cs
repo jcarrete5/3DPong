@@ -9,13 +9,13 @@ public class PlayerMover : MonoBehaviour
 	void Update () 
 	{
 		Vector3 newPosition = transform.position;
-		if (Input.GetKey ("w") && (Mathf.Abs(newPosition.x) + Mathf.Abs(newPosition.y) <= radius || newPosition.y < 0)) 
+		if (Input.GetKey ("w") && (Mathf.Sqrt(Mathf.Pow(newPosition.x, 2) + Mathf.Pow(newPosition.y, 2)) <= Mathf.Pow(radius, 2) || newPosition.y < 0)) 
 			newPosition.y += 0.15f;
-		if (Input.GetKey ("s") && (Mathf.Abs(newPosition.x) + Mathf.Abs(newPosition.y) <= radius || newPosition.y > 0))
+		if (Input.GetKey ("s") && (Mathf.Sqrt(Mathf.Pow(newPosition.x, 2) + Mathf.Pow(newPosition.y, 2)) <= Mathf.Pow(radius, 2) || newPosition.y < 0))
 			newPosition.y -= 0.15f;
-		if (Input.GetKey ("a") && (Mathf.Abs(newPosition.x) + Mathf.Abs(newPosition.y) <= radius || newPosition.x > 0))
+		if (Input.GetKey ("a") && (Mathf.Sqrt(Mathf.Pow(newPosition.x, 2) + Mathf.Pow(newPosition.y, 2)) <= Mathf.Pow(radius, 2) || newPosition.y < 0))
 			newPosition.x -= 0.15f;
-		if (Input.GetKey ("d") && (Mathf.Abs(newPosition.x) + Mathf.Abs(newPosition.y) <= radius || newPosition.x < 0))
+		if (Input.GetKey ("d") && (Mathf.Sqrt(Mathf.Pow(newPosition.x, 2) + Mathf.Pow(newPosition.y, 2)) <= Mathf.Pow(radius, 2) || newPosition.y < 0))
 			newPosition.x += 0.15f;
 		float x = newPosition.x;
 		float y = newPosition.y;
