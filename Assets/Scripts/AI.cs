@@ -43,10 +43,14 @@ public class AI : MonoBehaviour {
 			if(balls[0].transform.position.x - newPosition.x > 1.5)
 			{
 				newPosition.x += 1.5f;
+<<<<<<< HEAD
 				Debug.Log("Here3");
 			}
 			//Debug.Log(balls[0].transform.position.x + "\t" + balls[0].transform.position.y);
 			//Debug.Log(transform.position.x + "\t" + transform.position.y);
+=======
+			//Debug.Log(balls[0].transform.position.x + "\t" + balls[0].transform.position.y);
+>>>>>>> 3ce08858cb89dbfd9be86f4520a1bf76c63c6639
 			float x = newPosition.x;
 			float y = newPosition.y;
 			newPosition.z = (Mathf.Sqrt(-(Mathf.Pow (x, 2)) - (Mathf.Pow (y, 2)) + Mathf.Pow (radius, 2)) - centerZ);

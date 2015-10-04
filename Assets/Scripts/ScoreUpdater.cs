@@ -5,15 +5,17 @@ using System.Collections;
 public class ScoreUpdater : MonoBehaviour
 {
 	public Text scoreText, messageText;
-
+	
 	const int winLimit = 7;
 	static int playerScore, aiScore;
 	BallSpawner ballSpawner;
+	AudioSource sound;
 
 	void Start()
 	{
 		UpdateScore();
 		ballSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<BallSpawner>();
+		sound = GetComponent<AudioSource>();
 	}
 	
 	void UpdateScore()
@@ -46,13 +48,15 @@ public class ScoreUpdater : MonoBehaviour
 		DestroyDynamicObjects();
 		if(playerScore == winLimit)
 		{
-			Debug.Log("Player won!");
+			Debug.Log("You won!");
 			messageText.text = "Player Won!";
+			sound.PlayOneShot(sound.clip, 1f);
 		}
 		else if(aiScore == winLimit)
 		{
 			Debug.Log("AI won!");
 			messageText.text = "AI Won!";
+			sound.PlayOneShot(sound.clip, 1f);
 		}
 		else
 			StartCoroutine(NextRound());
