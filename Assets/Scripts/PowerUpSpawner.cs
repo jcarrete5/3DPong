@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PowerUpSpawner : MonoBehaviour {
 
+	public Transform boundary; 
 	public GameObject[] powerups;
 	// Use this for initialization
 	void Start () 
@@ -18,7 +19,10 @@ public class PowerUpSpawner : MonoBehaviour {
 			yield return new WaitForSeconds (5);
 			int randNum = Random.Range (0, 25);
 			if (randNum < powerups.Length)
-				Instantiate (powerups [randNum], new Vector3 (0, 0, 0), new Quaternion (0, 0, 0, 0));
+			{
+				Vector3 spawnPosition = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), Random.Range(-3, 3));
+				Instantiate (powerups [randNum], spawnPosition, new Quaternion (0, 0, 0, 0));
+			}
 		}
 	}
 }
