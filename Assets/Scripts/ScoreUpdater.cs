@@ -21,8 +21,10 @@ public class ScoreUpdater : MonoBehaviour
 		scoreText.text = "Player: " + playerScore + " | AI: " + aiScore;
 	}
 
-	void DestroyPowerUps()
+	void DestroyDynamicObjects()
 	{
+		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Ball"))
+			Destroy(obj);
 		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("PowerUp"))
 			Destroy(obj);
 	}
@@ -41,7 +43,7 @@ public class ScoreUpdater : MonoBehaviour
 		}
 		UpdateScore();
 
-		DestroyPowerUps();
+		DestroyDynamicObjects();
 		if(playerScore == winLimit)
 		{
 			Debug.Log("Player won!");
@@ -58,6 +60,7 @@ public class ScoreUpdater : MonoBehaviour
 
 	IEnumerator NextRound()
 	{
+		Debug.Log("Next Round Beginning...");
 		yield return new WaitForSeconds(2);
 		StartCoroutine(ballSpawner.DelaySpawnBall());
 	}
