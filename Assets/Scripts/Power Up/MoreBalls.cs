@@ -2,34 +2,28 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class MoreBalls : MonoBehaviour
-{
+public class MoreBalls : MonoBehaviour {
 	public GameObject ballPrefab;
 	Text messageText;
 
-	void Start()
-	{
+	void Start() {
 		messageText = GameObject.FindGameObjectWithTag("MessageText").GetComponent<Text>();
 	}
 	
-	void OnTriggerEnter(Collider other)
-	{
+	void OnTriggerEnter(Collider other) {
 		Destroy(gameObject);
 		ApplyEffect();
 	}
 
-	IEnumerator FlavorText()
-	{
+	IEnumerator FlavorText() {
 		messageText.text = "New ball added!";
 		yield return new WaitForSeconds(2f);
 		messageText.text = "";
 	}
 
-	void ApplyEffect()
-	{
+	void ApplyEffect() {
 		BallSpawner ballSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<BallSpawner>();
-		ballSpawner.SpawnBall(new Vector3(Mathf.Abs(Random.Range(-100, 100))+1,
-		                                  Mathf.Abs(Random.Range(-100, 100))+1,
-		                                  Mathf.Abs(Random.Range(-200, 200))+1));
+		Vector3 force = new Vector3(Mathf.Abs(Random.Range(-100, 100))+1, Mathf.Abs(Random.Range(-100, 100))+1, Mathf.Abs(Random.Range(-200, 200))+1);
+		ballSpawner.SpawnBall(force);
 	}
 }

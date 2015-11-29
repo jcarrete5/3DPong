@@ -5,13 +5,11 @@ public class DestroyByTime : MonoBehaviour {
 
 	public int timeAlive;
 	
-	void Start()
-	{
+	void Start() {
 		StartCoroutine(DestroyPowerUp());
 	}
 
-	IEnumerator DestroyPowerUp()
-	{
+	IEnumerator DestroyPowerUp() {
 		yield return new WaitForSeconds(timeAlive);
 		Destroy (gameObject);
 	}
