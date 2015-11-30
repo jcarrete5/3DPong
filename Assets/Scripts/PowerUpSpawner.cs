@@ -2,7 +2,6 @@
 using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour {
-
 	public Transform boundary; 
 	public GameObject[] powerups;
 
